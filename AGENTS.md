@@ -98,4 +98,4 @@ Reason strings are `same-commit`, `ancestor`, `no-added-changes`, `trees-match`,
 
 Lean on type inference and existing domain structs. Avoid explicit return types where inference is practical; never erase type safety to bypass a compiler error. Keep walkers budgeted and symlink-safe.
 
-Every behavior change needs the narrowest relevant test plus regression coverage for safety-sensitive paths. CLI tests invoke `env!("CARGO_BIN_EXE_wt-janitor")`; JSON tests parse stdout rather than matching formatting. Real-Git tests use only temporary paths and configure author/committer identity locally. Never point tests or manual apply commands at a user's existing repository.
+Every behavior change needs the narrowest relevant test plus regression coverage for safety-sensitive paths. CLI tests invoke `env!("CARGO_BIN_EXE_wt-janitor")`; JSON tests parse stdout rather than matching formatting. Real-Git tests use only temporary paths and run isolated from the developer's Git configuration. Never point tests or manual apply commands at a user's existing repository.
