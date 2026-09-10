@@ -1,0 +1,9 @@
+inactive_days = 7
+
+[cleanup]
+dependency_dirs = ["node_modules", ".venv"]
+# prune_min_age_days = 7
+
+[[repos]]
+name = "example"
+path = "~/Projects/example"
