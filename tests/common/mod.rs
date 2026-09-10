@@ -50,6 +50,11 @@ fn git_command(cwd: &Path) -> Command {
     command
         .arg("-C")
         .arg(cwd)
+        // Fixtures must not inherit the developer's Git configuration. Commit
+        // signing in particular makes the suite fail intermittently, because
+        // parallel tests overwhelm the signing agent.
+        .env("GIT_CONFIG_GLOBAL", "/dev/null")
+        .env("GIT_CONFIG_SYSTEM", "/dev/null")
         .env("GIT_AUTHOR_NAME", "wt-janitor test")
         .env("GIT_AUTHOR_EMAIL", "test@example.invalid")
         .env("GIT_COMMITTER_NAME", "wt-janitor test")
